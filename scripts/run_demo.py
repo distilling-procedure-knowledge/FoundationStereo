@@ -62,6 +62,13 @@ if __name__=="__main__":
   code_dir = os.path.dirname(os.path.realpath(__file__))
   img0 = imageio.imread(args.left_file)
   img1 = imageio.imread(args.right_file)
+  # if image has 4 channels, convert to 3 channels
+  print(f"img0.shape: {img0.shape}")
+  print(f"img1.shape: {img1.shape}")
+  if img0.shape[2] == 4:
+    img0 = img0[:,:,:3]
+  if img1.shape[2] == 4:
+    img1 = img1[:,:,:3]
   scale = args.scale
   assert scale<=1, "scale must be <=1"
   img0 = cv2.resize(img0, fx=scale, fy=scale, dsize=None)
