@@ -194,6 +194,5 @@ if __name__ == "__main__":
         print("In mode ",opt.mode,", output_path_dir parameter needs to be specified.")
         exit()
     if opt.mode >=2 and not os.path.isdir(opt.output_path_dir):
-        print("--output_path_dir parameter should be an existing folder but is not : ",opt.output_path_dir,"Exit program.")
-        exit()
+        os.makedirs(opt.output_path_dir, exist_ok=True)
     main(opt)
